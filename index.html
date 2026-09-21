@@ -79,37 +79,32 @@
 
         <!-- Раздел Контактов (Интегрирован с Formspree AJAX в content.js) -->
         <section class="contact-section">
-            <h2>Написать мне</h2>
-            
-            <div data-fs-success style="display: none;"></div>
-            <div data-fs-error style="display: none;"></div>
+    <h2>Написать мне</h2>
 
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <label for="form-name">Ваше имя</label>
-                    <input type="text" id="form-name" name="name" placeholder="Иван Иванов" data-fs-field required>
-                    <span data-fs-error="name"></span>
-                </div>
-                <div class="form-group">
-                    <label for="form-email">Email</label>
-                    <input type="email" id="form-email" name="email" placeholder="example@mail.ru" data-fs-field required>
-                    <span data-fs-error="email"></span>
-                </div>
-                <div class="form-group">
-                    <label for="form-phone">Номер телефона</label>
-                    <input type="tel" id="form-phone" name="phone" placeholder="+7 (999) 000-00-00" data-fs-field>
-                    <span data-fs-error="phone"></span>
-                </div>
-                <div class="form-group">
-                    <label for="form-message">Сообщение</label>
-                    <textarea id="form-message" name="message" rows="5" placeholder="Привет, Николай! Классный сайт..." data-fs-field required></textarea>
-                    <span data-fs-error="message"></span>
-                </div>
-                
-                <button type="submit" class="btn-submit" data-fs-submit-btn>Отправить сообщение</button>
-                <div id="form-status" class="form-status"></div>
-            </form>
-        </section>
+<!-- Добавлен id="contact-form" и убран метод/экшен (передадим их через JS) -->
+<form class="contact-form" action="https://formspree.io" method="POST">
+    <div class="form-group">
+        <label>Ваше имя</label>
+        <input type="text" name="name"> <!-- Убран атрибут required -->
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email"> <!-- Убран атрибут required -->
+    </div>
+    <div class="form-group">
+        <label>Номер телефона</label>
+        <input type="text" id="form-phone" name="phone"> <!-- Убран атрибут required -->
+    </div>
+    <div class="form-group">
+        <label>Сообщение</label>
+        <textarea name="message"></textarea> <!-- Убран атрибут required -->
+    </div>
+    <button type="submit" class="btn-submit">Отправить сообщение</button>
+</form>
+
+
+</section>
+
     </div>
 
     <!-- Модальное окно (Lightbox) -->
@@ -119,10 +114,13 @@
         <div id="lightbox-caption"></div>
     </div>
 
-    <!-- Корректное подключение Formspree SDK через unpkg -->
+      <!-- 1. Загрузка чистого ядра Formspree SDK для работы валидации в JS -->
     <script src="https://unpkg.com"></script>
-    <!-- Основная логика сайта -->
+    
+    <!-- 2. Твой файл с конфигурацией, маской телефона и логикой отправки -->
     <script src="content.js" defer></script>
 </body>
+</body>
 </html>
+
 
