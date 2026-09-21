@@ -10,12 +10,13 @@
     --success-color: #2ecc71;
 }
 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    scroll-behavior: smooth;
+    /* Плавный скролл удален */
 }
 
 body {
@@ -277,3 +278,4 @@ body {
         font-size: 35px;
     }
 }
+
