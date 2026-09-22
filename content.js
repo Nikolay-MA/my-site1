@@ -102,17 +102,23 @@ document.getElementById("scroll-to-gallery")?.addEventListener("click", () => {
     document.getElementById("gallery-target")?.scrollIntoView({ behavior: "auto", block: "start" });
 });
 
-    // Параллакс фоновых фигур
-    document.addEventListener("mousemove", (e) => {
-        const mouseX = (e.clientX / window.innerWidth) - 0.5;
-        const mouseY = (e.clientY / window.innerHeight) - 0.5;
-        document.querySelectorAll(".eps-shape").forEach((shape, idx) => {
-            shape.style.transform = `translate(${mouseX * (idx + 1) * 15}px, ${mouseY * (idx + 1) * 15}px) scale(1.05)`;
+    // Оптимизированный параллакс фоновых фигур (только для экранов шире 768px)
+    if (window.innerWidth > 768) {
+        document.addEventListener("mousemove", (e) => {
+            const mouseX = (e.clientX / window.innerWidth) - 0.5;
+            const mouseY = (e.clientY / window.innerHeight) - 0.5;
+            document.querySelectorAll(".eps-shape").forEach((shape, idx) => {
+                shape.style.transform = `translate(${mouseX * (idx + 1) * 15}px, ${mouseY * (idx + 1) * 15}px) scale(1.05)`;
+            });
         });
-    });
-    document.addEventListener("mouseleave", () => {
+        
+        document.addEventListener("mouseleave", () => {
+            document.querySelectorAll(".eps-shape").forEach(shape => shape.style.transform = "none");
+        });
+    } else {
+        // На телефонах жестко отключаем слежение, чтобы не лагало
         document.querySelectorAll(".eps-shape").forEach(shape => shape.style.transform = "none");
-    });
+    }
 
     // Модальное окно Lightbox
     const modal = document.getElementById("lightbox");
