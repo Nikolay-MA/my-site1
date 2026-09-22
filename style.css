@@ -277,5 +277,34 @@ body {
         right: 20px;
         font-size: 35px;
     }
+    /* --- Полная адаптивная верстка под мобильные устройства --- */
+@media (max-width: 680px) {
+    /* Упрощаем фон на мобилках, убирая тяжелые радиальные градиенты */
+    .vector-bg-emulation {
+        background: #f0f3f5 !important; /* Легкий однотонный пастельный фон */
+    }
+    
+    /* Отключаем размытие на карточке, так как оно сильно тормозит скролл */
+    .container, #ai-chat-window {
+        backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+    }
+    
+    /* Скрываем летающие стеклянные фигуры, которые не нужны на мобильном */
+    .eps-shape {
+        display: none !important;
+    }
+
+    /* ... весь остальной ваш CSS код, который уже был внутри @media ... */
+    body {
+        padding: 20px 10px;
+    }
+    .container {
+        padding: 30px 20px;
+        gap: 40px;
+        border-radius: 24px;
+    }
+    /* и так далее... */
 }
 
+}
